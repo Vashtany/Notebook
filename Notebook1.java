@@ -7,7 +7,6 @@ class Notebook {
     private int os; // Операционная система
     private String color; // Цвет
 
-    // Конструктор с параметрами
     public Notebook(int ram, int hdd, int os, String color) {
         this.ram = ram;
         this.hdd = hdd;
@@ -68,9 +67,7 @@ public class  Notebook1{
 
     // Метод для создания множества ноутбуков
     public static Set<Notebook> createNotebooks() {
-        // Создаем множество ноутбуков
         Set<Notebook> notebooks = new HashSet<>();
-
         // Добавляем некоторые ноутбуки в множество
         notebooks.add(new Notebook(8, 256, 1, "Black"));
         notebooks.add(new Notebook(16, 512, 2, "Silver"));
@@ -78,7 +75,6 @@ public class  Notebook1{
         notebooks.add(new Notebook(12, 256, 3, "Blue"));
         notebooks.add(new Notebook(8, 512, 2, "Gold"));
 
-        // Возвращаем множество ноутбуков
         return notebooks;
     }
 
@@ -87,12 +83,8 @@ public class  Notebook1{
      * @param notebooks
      */
     public static void filterNotebooks(Set<Notebook> notebooks) {
-        // Создаем сканер для ввода данных с клавиатуры
         Scanner scanner = new Scanner(System.in);
-
-        // Создаем карту для хранения критериев фильтрации и их значений
         Map<String, Object> criteria = new HashMap<>();
-
         // Выводим сообщение с вариантами критериев фильтрации
         System.out.println("Введите цифру, соответствующую необходимому критерию:");
         System.out.println("1 - ОЗУ");
@@ -104,7 +96,6 @@ public class  Notebook1{
         // Вводим цифру, соответствующую критерию
         int choice = scanner.nextInt();
 
-        // Пока не введен 0, продолжаем запрашивать критерии
         while (choice != 0) {
             final Map<String, Object> criteria2 ;
             // В зависимости от выбранной цифры, запрашиваем значение критерия и добавляем его в карту
@@ -137,11 +128,8 @@ public class  Notebook1{
                     break;
             }
 
-            // Вводим следующую цифру, соответствующую критерию
             choice = scanner.nextInt();
         }
-
-        // Закрываем сканер
         scanner.close();
 
         // Выводим сообщение о начале фильтрации
@@ -152,12 +140,8 @@ public class  Notebook1{
 
         // Проходим по всем ноутбукам в множестве
         for (Notebook notebook : notebooks) {
-            // Создаем флаг для проверки, удовлетворяет ли ноутбук всем критериям фильтра
             boolean match = true;
-
-            // Проходим по всем критериям в карте
             for (Map.Entry<String, Object> entry : criteria.entrySet()) {
-                // Получаем ключ и значение критерия
                 String key = entry.getKey();
                 Object value = entry.getValue();
 
@@ -204,9 +188,9 @@ public class  Notebook1{
         }
     }
 
-    // Главный метод для запуска программы
+    
     public static void main(String[] args) {
-        // Создаем множество ноутбуков
+        
         Set<Notebook> notebooks = createNotebooks();
 
         // Запрашиваем у пользователя критерии фильтрации и выводим ноутбуки, отвечающие фильтру
